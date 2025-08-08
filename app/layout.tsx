@@ -6,9 +6,10 @@
 
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import type { Metadata } from "next";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
-import "@/styles/globals.css"; 
+// Update the import path to the correct location of Navbar
+import { Navbar } from "@/components/ui/layout/navbar";
+import { Footer } from "@/components/ui/layout/footer";
+import "./globals.css"; 
 
 export const metadata: Metadata = {
   title: "Mi Escuela",
