@@ -1,16 +1,19 @@
-/**
- * # app/layout.tsx
- * * Define el layout principal de la aplicación 
- *   Incluye: proveedor de temas, barra de navegación y contenido principal.
- */
-
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import type { Metadata } from "next";
-// Update the import path to the correct location of Navbar
-import { Navbar } from "@/components/ui/layout/navbar";
+import "./globals.css";
+import { AppSidebar } from "@/components/ui/app-sidebar"
+import { SiteHeader } from "@/components/ui/site-header"
+import {
+  SidebarInset,
+  SidebarProvider,
+} from "@/components/ui/sidebar"
 import { Footer } from "@/components/ui/layout/footer";
-import "./globals.css"; 
-
+ 
+ 
+export const iframeHeight = "800px"
+ 
+export const description = "A sidebar with a header and a search form."
+ 
 export const metadata: Metadata = {
   title: "Mi Escuela",
   description: "WebApp para gestionar mi escuela",
@@ -18,11 +21,11 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
 };
-
+ 
 type RootLayoutProps = Readonly<{
   children: React.ReactNode;
 }>;
-
+ 
 export default function RootLayout({ children }: RootLayoutProps): React.ReactElement {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -34,10 +37,19 @@ export default function RootLayout({ children }: RootLayoutProps): React.ReactEl
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
+          <div className="[--header-height:calc(--spacing(14))]">
+            <SidebarProvider className="flex flex-col">
+              <SiteHeader />
+              <div className="flex flex-1">
+                <AppSidebar />
+                <SidebarInset>
+                  <div className="flex flex-1 flex-col gap-4 p-4">
+                    {children}
+                  </div>
+                  <Footer />
+                </SidebarInset>
+              </div>
+            </SidebarProvider>
           </div>
         </ThemeProvider>
       </body>
