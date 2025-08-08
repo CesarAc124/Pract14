@@ -1,4 +1,4 @@
-import { TablaMaestros } from "@/app/maestros/tablamaestros";
+import { TablaMaestros } from "@/components/tablamaestros";
 
 export default function MaestrosPage() {
   return (
