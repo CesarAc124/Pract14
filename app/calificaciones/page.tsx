@@ -1,4 +1,4 @@
-import { TablaCalificaciones } from "@/app/calificaciones/tabla-calificaciones";
+import { TablaCalificaciones } from "@/components/tablacalificaciones";
 
 export default function CalificacionesPage() {
   return (
